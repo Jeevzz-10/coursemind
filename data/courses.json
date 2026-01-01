@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "title": "Python for Data Science Bootcamp",
+    "description": "Learn Python for data analysis, visualization, and machine learning using pandas and scikit-learn.",
+    "tags": ["python", "data-science", "ml"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/course/python-data",
+    "published_date": "2023-01-15T10:00:00"
+  },
+  {
+    "id": "2",
+    "title": "Complete Web Development Bootcamp",
+    "description": "Become a full-stack web developer with HTML, CSS, Javascript, Node, and React.",
+    "tags": ["web-development", "frontend", "backend"],
+    "provider": "Coursera",
+    "url": "https://coursera.org/learn/web-dev",
+    "published_date": "2023-02-10T12:00:00"
+  },
+  {
+    "id": "3",
+    "title": "Machine Learning A-Z",
+    "description": "Master Machine Learning on Python & R. Intuition and Code for Data Science.",
+    "tags": ["ml", "ai", "python"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/course/machinelearning",
+    "published_date": "2023-03-05T09:30:00"
+  },
+  {
+    "id": "4",
+    "title": "Advanced React and Redux",
+    "description": "Deep dive into React, Redux, hooks, and frontend architecture patterns.",
+    "tags": ["frontend", "react", "javascript"],
+    "provider": "Pluralsight",
+    "url": "https://pluralsight.com/react-redux",
+    "published_date": "2023-04-20T14:15:00"
+  },
+  {
+    "id": "5",
+    "title": "Node.js API Masterclass",
+    "description": "Build extensive, scalable REST APIs with Node.js, Express, and MongoDB.",
+    "tags": ["backend", "node", "api"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/course/nodejs-api",
+    "published_date": "2023-05-12T11:00:00"
+  }
+]
