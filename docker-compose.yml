@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: courseminds_mongo
+    restart: always
+    environment:
+      # ${VARIABLE_NAME} pulls the value from your .env file
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db  # Save data even if container restarts
+
+volumes:
+  mongo_data:

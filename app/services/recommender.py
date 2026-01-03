@@ -1,48 +1,67 @@
-import json
+#recommender is now connected to database (no longer to json files)
 import os
+from dotenv import load_dotenv
+from pymongo import MongoClient
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+
+load_dotenv()
 
 class RecommendationService:
     def __init__(self):
         self.courses = []
         self.tfidf_matrix = None
         self.vectorizer = None
-        #automatically load data and train model when engine starts
+
+        self.mongo_user = os.getenv("MONGO_USER", "admin")
+        self.mongo_password = os.getenv("MONGO_PASSWORD", "secretpassword")
+        self.mongo_db_name = os.getenv("MONGO_DB", "courseminds")
+
+        self.mongo_uri = f"mongodb://{self.mongo_user}:{self.mongo_password}@localhost:27017"
         self._load_data()
         self._train_model()
     
     def _load_data(self):
-        #load data from data/courses.json
-        base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
-        file_path = os.path.join(base_dir, "data", "courses.json")
-        with open(file_path, "r") as f:
-            self.courses = json.load(f)
-            print(f"Data loaded {len(self.courses)} courses from the database.")#for now its data/courses.json
+        #connect to mongodb and fetch all courses.
+        print("recommender connecting to mongodb...")
+        try:
+            client = MongoClient(self.mongo_uri)
+            db = client[self.mongo_db_name]
+            collection = db.courses
+
+            self.courses = list(collection.find({} , {"_id":0}))
+
+            print(f"loaded {len(self.courses)} courses from MongoDB.")
+            client.close()
+        except Exception as e:
+            print(f"Error loading data from MongoDB: {e}")
+            self.courses = []
     
     def _train_model(self):
-        #converts english text to math(vectors).
+        #convert english text to math vectors
+        if not self.courses:
+            print("Warning: No courses found")
+            return
         corpus = []
         for course in self.courses:
             text = f"{course['title']} {course['description']} {' '.join(course['tags'])}"
             corpus.append(text)
-        self.vectorizer = TfidfVectorizer(stop_words = 'english') #removes words like 'the', 'and', etc..
+        
+        self.vectorizer = TfidfVectorizer(stop_words='english')
         self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
         print("Model Trained.")
-    
-    def get_recommendations(self, query_text: str, top_k: int = 3):
+
+    def get_recommendations(self, query_text: str, top_k: int=3):
+        #returns matches
+        if not self.tfidf_matrix is not None:
+            return []
         query_vec = self.vectorizer.transform([query_text])
-        # Measure Similarity (Cosine Similarity)
-        # linear_kernel is a fast way to calculate how similar the query is to every course.
-        # Returns scores like: [0.1, 0.95, 0.0, 0.4]
         cosine_scores = linear_kernel(query_vec, self.tfidf_matrix).flatten()
-        # Sort the scores
-        # argsort gives us the INDICES of the best matches (e.g., Course #2, then Course #5)
-        # We reverse it ([:-1]) to get highest scores first
         related_indices = cosine_scores.argsort()[:-top_k-1:-1]
+        
         results = []
         for idx in related_indices:
-            if cosine_scores[idx] > 0:
+            if cosine_scores[idx]>0:
                 results.append(self.courses[idx])
         
         return results
