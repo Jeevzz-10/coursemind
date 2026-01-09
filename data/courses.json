@@ -43,5 +43,140 @@
     "provider": "Udemy",
     "url": "https://udemy.com/course/nodejs-api",
     "published_date": "2023-05-12T11:00:00"
+  },
+  {
+    "id": "6",
+    "title": "Docker and Kubernetes: The Complete Guide",
+    "description": "Build, test, and deploy Docker applications with Kubernetes while learning production-style DevOps workflows.",
+    "tags": ["devops", "docker", "kubernetes", "cloud"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/docker-mastery",
+    "published_date": "2023-06-01T08:00:00"
+  },
+  {
+    "id": "7",
+    "title": "Java Programming Masterclass",
+    "description": "Learn Java In-Depth: OOPs, Data Structures, and building real-world applications.",
+    "tags": ["java", "backend", "programming"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/java-master",
+    "published_date": "2023-06-15T14:00:00"
+  },
+  {
+    "id": "8",
+    "title": "AWS Certified Solutions Architect",
+    "description": "Master Amazon Web Services (AWS) and pass the Solutions Architect Associate exam.",
+    "tags": ["cloud", "aws", "devops"],
+    "provider": "A Cloud Guru",
+    "url": "https://acloudguru.com/aws-architect",
+    "published_date": "2023-07-01T10:30:00"
+  },
+  {
+    "id": "9",
+    "title": "Flutter & Dart - The Complete Guide",
+    "description": "A Complete Guide to the Flutter SDK & Dart Framework for building native iOS and Android apps.",
+    "tags": ["mobile", "flutter", "dart", "app-development"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/flutter-dart",
+    "published_date": "2023-07-20T09:00:00"
+  },
+  {
+    "id": "10",
+    "title": "Cybersecurity for Beginners",
+    "description": "Learn the basics of ethical hacking, network security, and how to protect systems.",
+    "tags": ["security", "cybersecurity", "hacking"],
+    "provider": "Coursera",
+    "url": "https://coursera.org/security-basics",
+    "published_date": "2023-08-05T16:20:00"
+  },
+  {
+    "id": "11",
+    "title": "Data Structures and Algorithms in C++",
+    "description": "Master DSA to crack coding interviews using C++.",
+    "tags": ["dsa", "c++", "algorithms", "computer-science"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/dsa-cpp",
+    "published_date": "2023-08-15T11:45:00"
+  },
+  {
+    "id": "12",
+    "title": "Next.js & React - The Complete Guide",
+    "description": "Build server-side rendered React apps with Next.js and build full-stack apps.",
+    "tags": ["frontend", "react", "nextjs", "web-development"],
+    "provider": "Academind",
+    "url": "https://academind.com/nextjs",
+    "published_date": "2023-09-01T13:00:00"
+  },
+  {
+    "id": "13",
+    "title": "The Complete SQL Bootcamp",
+    "description": "Learn to use PostgreSQL to query complex data and perform data analysis.",
+    "tags": ["data", "sql", "database", "analytics"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/sql-bootcamp",
+    "published_date": "2023-09-10T10:00:00"
+  },
+  {
+    "id": "14",
+    "title": "Deep Learning Specialization",
+    "description": "Master Deep Learning, Neural Networks, CNNs, RNNs, and more.",
+    "tags": ["ai", "deep-learning", "neural-networks", "python"],
+    "provider": "Coursera",
+    "url": "https://coursera.org/deep-learning",
+    "published_date": "2023-10-01T12:00:00"
+  },
+  {
+    "id": "15",
+    "title": "Go: The Complete Developer's Guide",
+    "description": "Master Golang to build massive scale, high-performance backend systems.",
+    "tags": ["backend", "go", "golang", "systems"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/golang-guide",
+    "published_date": "2023-10-20T14:30:00"
+  },
+  {
+    "id": "16",
+    "title": "Rust Programming for Systems",
+    "description": "Learn Rust from scratch and build fast, memory-safe system applications.",
+    "tags": ["systems", "rust", "programming"],
+    "provider": "Pluralsight",
+    "url": "https://pluralsight.com/rust",
+    "published_date": "2023-11-05T09:15:00"
+  },
+  {
+    "id": "17",
+    "title": "Unreal Engine 5 C++ Developer",
+    "description": "Learn C++ and make video games in Unreal Engine 5.",
+    "tags": ["gamedev", "c++", "unreal", "3d"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/unreal-cpp",
+    "published_date": "2023-11-25T15:00:00"
+  },
+  {
+    "id": "18",
+    "title": "Ethical Hacking: Penetration Testing",
+    "description": "Learn how to exploit networks and applications like a black hat hacker, but for good.",
+    "tags": ["security", "hacking", "pentesting"],
+    "provider": "Udemy",
+    "url": "https://udemy.com/ethical-hacking",
+    "published_date": "2023-12-01T10:00:00"
+  },
+  {
+    "id": "19",
+    "title": "UI/UX Design Masterclass",
+    "description": "Learn to design beautiful interfaces and user experiences using Figma.",
+    "tags": ["design", "ui", "ux", "figma"],
+    "provider": "Skillshare",
+    "url": "https://skillshare.com/ui-ux",
+    "published_date": "2023-12-10T11:30:00"
+  },
+  {
+    "id": "20",
+    "title": "TensorFlow Developer Certificate",
+    "description": "Pass the TensorFlow exam and master Computer Vision and NLP.",
+    "tags": ["ai", "tensorflow", "python", "data-science"],
+    "provider": "Coursera",
+    "url": "https://coursera.org/tensorflow",
+    "published_date": "2024-01-05T09:00:00"
   }
 ]

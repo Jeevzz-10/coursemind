@@ -11,6 +11,10 @@ const UserSchema = new mongoose.mongoose.Schema({
         type: String,
         required: true
     },
+    interests: {
+        type: [String], // Array of strings e.g. ["python", "react"]
+        default: []
+    },
     createdAt: {
         type: Date,
         default: Date.now

@@ -1,3 +1,4 @@
+# similar to ETL pipeline : moving data from json file to mongodb database.
 import asyncio
 import json
 import os

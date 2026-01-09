@@ -51,17 +51,41 @@ class RecommendationService:
         self.tfidf_matrix = self.vectorizer.fit_transform(corpus)
         print("Model Trained.")
 
-    def get_recommendations(self, query_text: str, top_k: int=3):
-        #returns matches
-        if not self.tfidf_matrix is not None:
+    def get_recommendations(self, query_text: str, interests: str = "", top_k: int = 5):
+        # STRATEGY: SEARCH IS KING
+        
+        # Scenario A: User typed a search (e.g., "ai")
+        if query_text and len(query_text.strip()) > 0:
+            print(f"SEARCH MODE: Ignoring interests to find '{query_text}'")
+            final_text = query_text # Pure search, no pollution from interests
+            threshold = 0.1         # Strict matching
+        
+        # Scenario B: Search is empty (User just wants recommendations)
+        else:
+            print(f"DISCOVERY MODE: Using interests '{interests}'")
+            final_text = interests
+            threshold = 0.05        # Loose matching (show anything relevant)
+
+        # Safety Check
+        if not final_text or self.tfidf_matrix is None:
             return []
-        query_vec = self.vectorizer.transform([query_text])
+
+        # Vectorize & Calculate
+        query_vec = self.vectorizer.transform([final_text])
         cosine_scores = linear_kernel(query_vec, self.tfidf_matrix).flatten()
+        
+        # Sort results
         related_indices = cosine_scores.argsort()[:-top_k-1:-1]
         
         results = []
         for idx in related_indices:
-            if cosine_scores[idx]>0:
+            score = cosine_scores[idx]
+            
+            # Apply the specific threshold for the mode
+            if score > threshold:
+                # Optional: Add the score to the result so you can debug it later
+                # course_data = self.courses[idx].copy()
+                # course_data['score'] = score 
                 results.append(self.courses[idx])
         
         return results
