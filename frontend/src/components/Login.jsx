@@ -1,71 +1,82 @@
-import React , { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Login = ({ setToken, setShowLogin }) => {
-    const [formData, setFormData] = useState({username: '', password: ''});
-    const [message, setMessage] = useState('');
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [message, setMessage] = useState('');
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await axios.post('http://localhost:3000/auth/login', formData);
-            setMessage('Login Successful');
-            setToken(res.data.token);
-            console.log("Server Response:", res.data);
-        }
-        catch (error) {
-            setMessage('Login Failed. Check credentials.');
-            console.error(error);
-        }
-    };
-    return(
-        <div style={{ maxWidth: '300px', margin: 'auto', marginTop: '50px'}}>
-            <h2>Login</h2>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-            {/* The Form UI*/}
-            <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: '10px' }}>
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={formData.username} //conncet input to the state(two-way binding)
-                        onChange={handleChange}
-                        style={{width:'100%', padding:'8px'}}
-                    />
-                </div>
-                <div style={{marginBotto: '10px'}}>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        style={{width: '100%', padding:'8px'}}
-                    />
-                </div>
-                <button type="submit" style={{width:'100%', padding:'10px'}}>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post('http://localhost:3000/auth/login', formData);
+      setMessage('Login Successful!');
+      setToken(res.data.token); 
+    } catch (error) {
+      setMessage('Login Failed. Check credentials.');
+    }
+  };
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '80vh' }}>
+        <div className="glass-card" style={{ width: '100%', maxWidth: '400px', padding: '40px' }}>
+            <h2 style={{ 
+                textAlign: 'center', 
+                fontSize: '2rem', 
+                marginBottom: '30px',
+                background: 'linear-gradient(to right, #646cff, #9f9eff)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+            }}>
+                LOGIN
+            </h2>
+
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}
+                />
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    style={{ padding: '12px', background: 'rgba(0,0,0,0.2)' }}
+                />
+                <button type="submit" style={{ 
+                    padding: '12px', 
+                    background: 'var(--primary)', 
+                    color: 'white', 
+                    border: 'none', 
+                    borderRadius: '8px', 
+                    fontSize: '1rem',
+                    fontWeight: 'bold',
+                    marginTop: '10px'
+                }}>
                     Login
                 </button>
             </form>
-            {/* Conditional Rendering: Only show message if it exists */}
-            {message && <p>{message}</p>}
+            
+            {message && <p style={{ textAlign: 'center', marginTop: '20px', color: message.includes('Failed') ? '#ff4444' : '#4caf50' }}>{message}</p>}
 
-            {/* 2. PASTE YOUR NEW CODE HERE */}
-            <p style={{ marginTop: '20px', fontSize: '14px' }}>
-                New here? <br/>
-                <button
-                    onClick={() => setShowLogin(false)}
-                    style={{ background: 'none', border: 'none', color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
-                    Create an account
+            <div style={{ textAlign: 'center', marginTop: '30px' }}>
+                <button 
+                    onClick={() => setShowLogin(false)} 
+                    style={{ background: 'none', border: 'none', color: 'white', textDecoration: 'underline', cursor: 'pointer' }}>
+                    Don't have an account? Create one.
                 </button>
-            </p>
-        
+            </div>
         </div>
-    );
+    </div>
+  );
 };
 
 export default Login;
